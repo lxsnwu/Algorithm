@@ -1,4 +1,8 @@
 
+
+
+
+# 二叉树中的节点个数
 ``` 
 /**
 * 1. 求二叉树中的节点个数
@@ -27,3 +31,41 @@ public static int getNodeNum(TreeNode root) {
     return count;
 }
 ```
+
+# 求二叉树的深度（高度）
+'''
+如果二叉树为空，二叉树的深度为0
+如果二叉树不为空，二叉树的深度 = max(左子树深度， 右子树深度) + 1
+/**
+* 求二叉树的深度（高度）
+* 递归
+* @return 树的深度
+*/
+public static int getDepthRec(TreeNode root) {
+   if (root == null) {
+       return 0;
+   }
+   return Math.max(getDepthRec(root.left), getDepthRec(root.right)) + 1;
+}
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
