@@ -1,8 +1,8 @@
 
 
-# 单链表反转
+## 单链表反转
 
-##　递归法
+### 递归法
 ```
 static Node reverseLinkedList(Node node) {
     if (node == null || node.next == null) {
@@ -16,7 +16,7 @@ static Node reverseLinkedList(Node node) {
 }
 ```
 
-##　遍历法
+### 遍历法
 ```
 public static Node reverse(Node node) {
     Node first = node;
