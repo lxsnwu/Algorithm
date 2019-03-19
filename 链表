@@ -15,21 +15,22 @@ static Node reverseLinkedList(Node node) {
 }
 ```
 
-＃＃ｓｓｓａｓ
-｀｀｀
-static Node reverseLinkedList(Node node) {
-    Node previousNode = null;
-    Node currentNode = node;
-    Node headNode = null;
-    while (currentNode != null) {
-        Node nextNode = currentNode.next;
-        if (nextNode == null) {
-            headNode = currentNode;
-        }
-        currentNode.next = previousNode;
-        previousNode = currentNode;
-        currentNode = nextNode;
+##　遍历法
+```
+public static Node reverse(Node node) {
+    Node first = node;
+    Node reverse = null;        //reverse用于储存前一节点，second用于储存后一节点*
+    while (first != null) {
+        Node second = first.next;    
+        first.next = reverse;       
+        reverse = first;              
+        first = second;
     }
-    return headNode;
-｀｀｀
+
+    return reverse;
+}
+```
+
+
+
 
