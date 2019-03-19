@@ -1,0 +1,35 @@
+
+# 单链表反转
+
+##　递归法
+```
+static Node reverseLinkedList(Node node) {
+    if (node == null || node.next == null) {
+        return node;
+    } else {
+        Node headNode = reverseLinkedList(node.next);
+        node.next.next = node;
+        node.next = null;
+        return headNode;
+    }
+}
+```
+
+＃＃ｓｓｓａｓ
+｀｀｀
+static Node reverseLinkedList(Node node) {
+    Node previousNode = null;
+    Node currentNode = node;
+    Node headNode = null;
+    while (currentNode != null) {
+        Node nextNode = currentNode.next;
+        if (nextNode == null) {
+            headNode = currentNode;
+        }
+        currentNode.next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+    }
+    return headNode;
+｀｀｀
+
