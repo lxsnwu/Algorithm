@@ -17,7 +17,7 @@ Fibonacci(4) = Fibonacci(3) + Fibonacci(2);
 由于我们的代码并没有记录Fibonacci(1)和Fibonacci(0)的结果，对于程序来说它每次递归都是未知的，因此光是n=4时f(1)就重复计算了3次之多。
 #### 时间复杂度为二叉树的节点个数：(2^h)-1=O(2^N) ，空间复杂度为树的高度：h即O(N)。
 ```
- public static int Solution(int n){  //递归解法
+ public static int Fibonacci(int n){  //递归解法
    
       if(n==1){  
           return 0;  
@@ -26,7 +26,7 @@ Fibonacci(4) = Fibonacci(3) + Fibonacci(2);
       if(n==2){  
           return 1;  
       }  
-      return Solution(n-1)+Solution(n-2);  
+      return Fibonacci(n-1)+Fibonacci(n-2);  
   } 
 ```
 
