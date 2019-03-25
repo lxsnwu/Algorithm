@@ -136,9 +136,86 @@ public staic viod reversePrint(Node head){
 ## 判断单链表是否有环
 
 ```
-public sta
-
+public static boolean hasCycle(Node head){
+    if(head == null) return false;
+    Node r1 = head;
+    Node r2 = head;
+    while(r2 != null){
+    r1 = ri.next;
+    r2 = r2.next.next;
+    if(r1 == r2) return ture;
+    }
+    retrun false;
+}
 ```
+
+##  取出有环链表中，环的长度
+```
+//返回环中的一个节点r1
+public static Node getCycleNode(Node head){
+    if(head == null) return null;
+    Node r1 = head;
+    Node r2 = head;
+    while(r2 != null){
+        r1 = ri.next;
+        r2 = r2.next.next;
+        if(r1 == r2) return r1;
+    }
+}
+//从r1开始，遍历环，若遍历到与r1相同处，则返回环的长度。
+public static int getCycleLength(Node node){
+    if(head == null) return 0;
+    Node r = getCycleNode(node);
+    Node r2 = r;
+    int count = 0;
+    while(r != null){
+        r = r.next;
+        count++;
+        if(r == r2)
+            break;
+    }
+    return count；
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
