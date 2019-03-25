@@ -90,16 +90,19 @@ public static String reverseString(String str){
 问题描述：请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
 
 ```
-public String replaceSpace(StringBuffer str){
+public String replaceSpace(String str){
+  StringBuffer str1 = nre StringBuffer(str);
   StringBuffer str2 = new StringBuffer();
   int len = str.length();
   for(int i=0 ; i<len ; i++){
-    str2.append(str.charAt(i));
+    if(str.charAt(i)==" "){
+      str.append("02%")
+    }else
+       str2.append(str.charAt(i));  
   }
   return str2.toString;
 }
 ```
-
 
 
 
