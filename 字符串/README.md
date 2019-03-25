@@ -28,18 +28,77 @@ public class Solution{
   }
 }
 ```
+方法二：利用LinkedHashMap的有序性
 
+```
+public class Solution {
+    private Map<Character, Integer> map = new LinkedHashMap<>();
+     
+    //添加char到map
+    public void Insert(char ch) {
+        if (map.containsKey(ch)) {
+            map.put(ch, map.get(ch) + 1);
+        } else {
+            map.put(ch, 0);
+        }
+    }
+     
+    //返回字符
+    public char getOnceChar() {
+        //根据entrySet遍历map。
+        for (Map.Entry<Character, Integer> set : map.entrySet()) {
+            if (set.getValue() == 0) {
+                return set.getKey();
+            }
+        }
+        return '#';
+    }
+}
 
+```
 
+## 翻转字符串
 
+方法一：利用栈
+```
+public static string reverseString(String str){
+  Stack<Character> stack = new Stack<Character>();
+  char[] c = new char[str.length()];
+  char[] temp = new char[str.length()];
+  c = str.toCharArray();
+  
+  for(int i=0;i<str.length;i++){
+    stack.push(c[i]);
+  }
+  for(int i=0;i<str.length;i++){
+    temp[i] = stack.pop();
+  }
+  retrun String.valueOf(temp);
+}
+```
 
+方法二：利用StringBuffer中的reverse()
+```
+public static String reverseString(String str){
+  StringBuffer str2 = new StringBuffer(str);
+  return str2.reverse().toString;
+}
+```
 
+## 替换空格
 
+问题描述：请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
 
-
-
-
-
+```
+public String replaceSpace(StringBuffer str){
+  StringBuffer str2 = new StringBuffer();
+  int len = str.length();
+  for(int i=0 ; i<len ; i++){
+    str2.append(str.charAt(i));
+  }
+  return str2.toString;
+}
+```
 
 
 
