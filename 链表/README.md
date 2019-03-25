@@ -223,6 +223,69 @@ public static Node FirstSameNode(Node head1,Node head2){
     return cur1.next;
 }
 ```
+方法二：更简单，不需要额外的空间，首先遍历两个链表得到它们的长度。在第二次遍历的时候，在较长的链表上走 |len1-len2| 步，接着再同时在两个链表上遍历，找到的第一个相同的结点就是它们的第一个交点。
+```
+public static Node FirstSameNode(Node head1,Node head2){
+    Node r1 = head1;
+    Node r2 = head2;
+    Node r3 = head1;
+    Node r4 = head2;
+    int len1 = 0;
+    int len2 = 0;
+    
+    //获取两个链表的长度。
+    while(r1 != null){
+        len1++;
+        r1 = r1.next;
+    }
+    while(r2 != null){
+        len2++;
+        r2 = r2.next;
+    }  
+    
+    //比较两个链表的长短。
+    int len3 = Math.abs(len1-len2);
+    if(len1 > len2){
+        for(int i=0;i<len3;i++){
+            r3 = r3.next;
+        }
+    } else {
+        for(int i=0;i<len3;i++){
+            r4 = r4.next;
+        }
+    
+    //开始走，知道两个指针相遇。
+    while(r3!=null && r4!=null){
+        if(r3 == r4) return r3;
+        r3 = r3.next;
+        r4 = r4.next;
+    }
+    return null;
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
