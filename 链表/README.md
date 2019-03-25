@@ -1,4 +1,3 @@
-[toc]
 
 ## 单链表反转
 
@@ -15,7 +14,6 @@ static Node reverseLinkedList(Node node) {
     }
 }
 ```
-[toc]
 
 ### 遍历法
 ```
@@ -66,14 +64,81 @@ public static Node findLastNode(Node head,int index){
 
 ```
 
+## 查找单链表中的中间结点
+```
+public static Node findMidNode(Node head){
+    if(node == null) return null;
+    
+    Node ri = head;
+    Node r2 = head;
+    while(r2 != null && r2.next != null){
+        r1 = r1.next;
+        r2 = r2.next.next;
+    }
+    return r1;
+}
+```
 
+## 合并两个有序的单链表，合并之后的链表依然有序
+```
+public static Node mergeLinkList(Node head1,Node head2){
+    if(head1 == null || head2 == null){
+        if(head1 == null && head2 == null) return null;
+        else return head1 == null ? head2 : head1;
+    }
+    //一个保持新链表的头节点，一个保存现在的指向
+    Node temp;
+    Node curhead;
+    if(head1.val > head2.val) 
+        curhead = head2;
+        temp = head2;
+        head2 = head2.next;
+    else {
+        curhead = head1;
+        temp = head1;
+        head1 = head1.next;
+    }
+    
+    while(head1 != null || head2 != null){
+        if(head1 != null && head2 !=null){
+            if(head1.val > head2.val){
+                temp.next = head2;
+                head2 = head2.next;
+            }
+            else {
+                temp.next = head1;
+                head1 = head1.next;
+            }
+        }
+        if(head1 == null){
+            temp.next = head2;
+            head2 = head2.next;
+        }
+        else {
+            temp.next = head1;
+            head1 = head1.next;
+        }
+    }
+    return curhead;
+}
+```
 
+## 从尾到头打印单链表
+```
+public staic viod reversePrint(Node head){
+    if(head != null) return;
+    reversePrint(head.next);
+    System.out.print(head.val + "-->")
+}
 
+```
 
+## 判断单链表是否有环
 
+```
+public sta
 
-
-
+```
 
 
 
