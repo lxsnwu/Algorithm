@@ -50,7 +50,21 @@ public static int getDepthRec(TreeNode root) {
 ```
 
 
-
+## 二叉树的层次遍历
+```
+public static void levelTraver(TreeNode root){
+	if(node == null) return;
+	Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+	queue.offer(root);
+	Node temp;
+	while(!queue.isEmpty){
+		temp = queue.poll();
+		System.out.print(temp.val + " ");
+		if(root.left != null) queue.offer(root.left);
+		if(root.right != null) queue.offer(root.right);
+	}
+}
+```
 
 
 
