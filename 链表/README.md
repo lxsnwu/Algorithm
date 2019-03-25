@@ -1,4 +1,3 @@
-
 [toc]
 
 ## 单链表反转
@@ -16,6 +15,7 @@ static Node reverseLinkedList(Node node) {
     }
 }
 ```
+[toc]
 
 ### 遍历法
 ```
