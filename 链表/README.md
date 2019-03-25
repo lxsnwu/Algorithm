@@ -149,7 +149,7 @@ public static boolean hasCycle(Node head){
 }
 ```
 
-##  取出有环链表中，环的长度
+###  取出有环链表中，环的长度
 ```
 //返回环中的一个节点r1
 public static Node getCycleNode(Node head){
@@ -177,45 +177,52 @@ public static int getCycleLength(Node node){
     return count；
 }
 ```
+### 单链表中，取出环的起始点
+```
+//这里要用到上面的结论，即需要知道环的长度，再设两个指针，r1，r2。r2先走length步，两者再一起走，相遇处即是环的起始点。
+public static Node getCycleStart(Node head){
+    int length = getCycleLength(head);
+    Node ri = head;
+    Node r2 = head;
+    for(int i=0;i<lenth;i++){
+        r2 = r2.next;
+    }
+    while(r1!=null && r2!=null){
+        r1 = r1.next;
+        r2 = r2.next;
+        if(r1 == r2) 
+            return r1;    
+    }
+    retrun null;
+}
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 判断两个单链表相交的第一个交点
+```
+public static Node FirstSameNode(Node head1,Node head2){
+    Stack<Node> stack1 = new Stack<Node>();
+    Stack<Node> stack2 = new Stack<Node>();
+    Node r1 = head1;
+    Node r2 = head2;
+    Node cur1;
+    Node cur2;
+    while(r1 != null){
+        stack1.push(r1);
+        r1 = r1.next;
+    }
+    while(r2 != null){
+        stack2.push(r2);
+        r2 = r2.next;
+    } 
+    while(!stack1.isEmpty && !stack2.isEmpty){
+        cur1 = stack1.pop();
+        cur2 = stack2.pop();
+        if(cur1 != cur2)
+            break;
+    }
+    return cur1.next;
+}
+```
 
 
 
