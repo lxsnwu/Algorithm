@@ -91,16 +91,15 @@ public static String reverseString(String str){
 
 ```
 public String replaceSpace(String str){
-  StringBuffer str1 = new StringBuffer(str);
-  StringBuffer str2 = new StringBuffer();
+    StringBuffer str1 = new StringBuffer();
   int len = str.length();
   for(int i=0 ; i<len ; i++){
-    if(str.charAt(i)==" "){
-      str.append("02%")
+    if(str.charAt(i)==' '){
+      str1.append("02%")
     }else
-       str2.append(str.charAt(i));  
+      str1.append(str.charAt(i));  
   }
-  return str2.toString;
+  return str1.toString;
 }
 ```
 ## 是否为回文串
