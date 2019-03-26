@@ -91,7 +91,7 @@ public static String reverseString(String str){
 
 ```
 public String replaceSpace(String str){
-  StringBuffer str1 = nre StringBuffer(str);
+  StringBuffer str1 = new StringBuffer(str);
   StringBuffer str2 = new StringBuffer();
   int len = str.length();
   for(int i=0 ; i<len ; i++){
