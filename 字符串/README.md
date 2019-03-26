@@ -103,6 +103,29 @@ public String replaceSpace(String str){
   return str2.toString;
 }
 ```
+## 是否为回文串
+
+问题描述：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。说明：本题中，我们将空字符串定义为有效的回文串。
+![avatar](https://upload-images.jianshu.io/upload_images/1670644-f5d13bd20d6d5168.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+
+
+```
+public boolean isPalindrome(String str){
+  str = str.toLowerCase();
+  int len = str.length();
+  StringBuffer str2 = new StringBuffer(str); 
+  char
+  for(char c : str.toCharArray())
+    if((c>='0' && c<='9') || (c>='a' && c<='z')){
+      str2.append(c);
+    }
+  }
+  return str2.toString.equals(str2.reverse().toString());
+}
+
+```
+
+
 
 ## 最长回文串
 
@@ -129,9 +152,32 @@ public int longestPalindrome(String str){
 
 ```
 
+## 第一次只出现一次的字符
 
+题目描述：在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1.
 
+思路解析：先在hash表中统计各字母出现次数，第二次扫描直接访问hash表获得次数。也可以用数组代替hash表。
 
+```
+public int FirstNotRepeatingChar(String str){
+  int len = str.length();
+  HashMap<Character> hash = new HashMap<Character>();
+  for(int i = 0 ; i<len ; i++){
+    if(hash.containsKey(str.charAt(i))){
+      int val = hash.get(charAt(i));
+      hash.put(str.charAt(i),val+1);
+    } else
+    hash.put(str.charAt(i),1);
+  }
+
+  for(int i =0; i<len; i++){
+    if(hash.get(str.charAt(i))==1);
+    return str.charAt(i);
+  }
+  retrun -1;
+} 
+
+```
 
 
 
