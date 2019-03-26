@@ -104,9 +104,30 @@ public String replaceSpace(String str){
 }
 ```
 
+## 最长回文串
 
+问题描述：给定一个包含大写字母和小写字母的字符串，找到通过这些字母构造成的最长的回文串。在构造过程中，请注意区分大小写。比如 "Aa" 不能当做一个回文字符串。
+![avatar](https://upload-images.jianshu.io/upload_images/1670644-e1c1219dc0d109f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
+思路解析：统计字母出现的次数即可，双数才能构成回文。因为允许中间一个数单独出现，比如“abcba”，所以如果最后有字母落单，总长度可以加 1。
 
+```
+public int longestPalindrome(String str){
+  int len = str.length();
+  if(len == 0)  return 0;
+  int count = 0;
+  HashSet<Character> ch = new HashSet<Character>();
+  for(int i=0;i<len;i++){
+    if(ch.contains(s.charAt(i))){
+      ch.remove(s.charAt(i));
+      count ++;
+    }
+    else ch.add(s.charAt(i));
+  }
+  return !ch.isEmpty()? count*2 : count*2 + 1;
+}
+
+```
 
 
 
