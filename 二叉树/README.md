@@ -14,7 +14,7 @@ public static int getNodeNum(TreeNode root) {
     if (root == null) {
         return 0;
     }
-    Queue<TreeNode> queue =  new LinkedList<>(); // 用队列保存树节点，先进先出
+    Queue<TreeNode> queue =  new LinkedList<TreeNode>(); // 用队列保存树节点，先进先出
     queue.add(root);
     int count = 1; // 节点数量
     while (!queue.isEmpty()) {
@@ -65,6 +65,57 @@ public static void levelTraver(TreeNode root){
 	}
 }
 ```
+
+
+## 叉树的直径（两节点的最长路径）
+
+```
+    class Solution{
+        int max = 0;
+        public int depthTree(TreeNode root){
+            if(root == null) return 0;
+            else
+                return Math.max(TreeNode(root.left),TreeNode(root.right)) + 1;        
+        }
+        
+        public int maxDepthTree(TreeNode root){
+            if(root == null) return 0;
+            int depthlr = depthTree(root.left)+depthTree(root.right)+1
+            max =  Math.max(depthlandr,max);
+            
+            maxDepthTree(root.left);
+            maxDepthTree(root.right);
+            
+            return max;
+        }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
