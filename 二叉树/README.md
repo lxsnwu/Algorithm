@@ -68,7 +68,8 @@ public static void levelTraver(TreeNode root){
 
 
 ## 叉树的直径（两节点的最长路径）
-
+ 根节点为root的二叉树的直径 = max(root.left的直径，root.right的直径，
+root.left的最大深度+root.right的最大深度+1)
 ```
     class Solution{
         int max = 0;
