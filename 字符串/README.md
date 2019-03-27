@@ -1,5 +1,4 @@
 
-![avatar](https://images0.cnblogs.com/blog2015/694841/201506/231749553615077.png)
 
 ## 字符流中第一个不重复的字符
 
@@ -179,12 +178,46 @@ public int FirstNotRepeatingChar(String str){
 ```
 
 
+## 二叉树中和为某一值的路径 
+![avatar](https://images0.cnblogs.com/blog/452797/201504/301011384433654.png)
 
+思路解析：首先需要明白路径的概念，路径是从根节点出发，一直到叶子节点，所形成的一条路径。
+  所以我们寻找和为某一值的路径的时候，首先从根节点10出发，前序遍历二叉树，路径为10,5,4，发现和不为22，所以需要从4返回到5，然后再走7，发现和为22，记录下这条路径，然后再返回到5，再返回到10，再从10的右子树开始，到12，又记录下一条路径。
+  发现这是一个栈的结构，所以我们考虑用一个栈来存储路径，另外我们需要一个结果来存储currentSum，用于与exceptedSum相比较
+```
+public void findPath(TreeNode root, int expectedSum,Stack<Integer> path, int currentSum) {
+  if (root == null) return;
+  currentSum += root.data;
 
-
-
-
-
+  path.push(root.data);
+  //判断是否为叶节点
+  boolean isLeaf = (root.leftNode == null && root.rightNode == null);
+  if (isLeaf) {
+  
+    //判断是否为期望值
+    if (currentSum == expectedSum) {
+    
+    System.out.println("A path is");
+    for (int i : path)
+    System.out.print(i+" ");
+    System.out.println();
+    
+    }
+    
+  } else {
+    //如果存在左节点，递归左节点。
+    if (root.leftNode != null) {
+      findPath(root.leftNode, expectedSum, path, currentSum);
+    }
+    if (root.rightNode != null) {
+      findPath(root.rightNode, expectedSum, path, currentSum);
+     }
+  }
+  //如果不是期望值，则减去root节点的值
+  currentSum -= root.data;
+  path.pop();
+}
+```
 
 
 
