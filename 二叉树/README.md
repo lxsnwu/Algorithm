@@ -203,9 +203,9 @@ public TreeNode comNode(TreeNode root,TreeNode n1,TreeNode n2){
 	if(root == n1) return n1;
 	if(root == n1) return n2;
 	else{
-		if(hasNode(root.left,n1)){
-			if(hasNode(root.right,n2))
-				return root;
+	     if(hasNode(root.left,n1)){
+		if(hasNode(root.right,n2))
+			return root;
 			else comNode(root.left,n1,n2)
 		}
 	} else {
