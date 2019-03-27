@@ -42,12 +42,23 @@ public static int getNodeNum(TreeNode root) {
 * @return 树的深度
 */
 public static int getDepthRec(TreeNode root) {
-   if (root == null) {
+   if (root == null) 
        return 0;
-   }
    return Math.max(getDepthRec(root.left), getDepthRec(root.right)) + 1;
 }
 ```
+还有一种写法：
+```
+    public static int getDepthRec(TreeNode root) {
+        if(root == null)
+            return 0;
+        int l = getDepthRec(root.left);
+        int r = getDepthRec(root.right);
+        return l > r ? l + 1 : r + 1;
+    }
+```
+
+
 
 
 ## 二叉树的层次遍历
@@ -91,19 +102,51 @@ root.left的最大深度+root.right的最大深度+1)
         }
 ```
 
+## 统计树中结点的个数
+树中结点的个数等于根节点(1) + 左子树结点个数 + 右子树的个数，递归求解即可。
+
+```
+public static int count(Node T) {
+	if(T != null) {
+		return count(T.left) + count(T.right) + 1;
+	}else 
+		return 0;
+	}
+```
 
 
+## 求二叉树第k层的节点个数
+递归解法： O(n)O(n)
+思路：求以root为根的k层节点数目，等价于求以root左孩子为根的k-1层（因为少了root）节点数目 加上以root右孩子为根的k-1层（因为 少了root）节点数目。即：
 
+1.如果二叉树为空或者k<1，返回0
+2.如果二叉树不为空并且k==1，返回1
+3.如果二叉树不为空且k>1，返回root左子树中k-1层的节点个数与root右子树k-1层节点个数之和
+```
+public int kNum(TreeNode root,int k){
+	if(root == null || k < 1) return 0;
+	if(k == 1) return 1;
+	return kNum(root.left,k-1) + kNum(root.right,k-1) +1;
+```
 
+## 求二叉树的镜像
+操作给定的二叉树，将其变换为源二叉树的镜像。如下图：
+![avatar](https://img-blog.csdn.net/20180401215350230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4enh6eDAxMTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
+递归求解的过程:
+1.先把当前根节点的左右子树换掉；
+2.然后递归换自己的左右子树；
 
-
-
-
-
-
-
-
+```
+public void minorTree(TreeNode root){
+	if(root == null) return;
+	TreeNode temp = root.left;
+	root.left = root.right;
+	root.right = temp;
+	minorTree(root.left);
+	minorTree(root.right);
+}
+```
 
 
 
