@@ -207,8 +207,17 @@ public TreeNode comNode(TreeNode root,TreeNode n1,TreeNode n2){
 }
 ```
 
+## 二叉树的右视图
+-leetcode199
+输入: [1,2,3,null,5,null,4]
+输出: [1, 3, 4]
+解释:
 
-
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
 
 
 
