@@ -78,12 +78,12 @@ public static void levelTraver(TreeNode root){
 	if(node == null) return;
 	Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
 	queue.offer(root);
-	Node temp;
+	TreeNode temp;
 	while(!queue.isEmpty){
 		temp = queue.poll();
 		System.out.print(temp.val + " ");
-		if(root.left != null) queue.offer(root.left);
-		if(root.right != null) queue.offer(root.right);
+		if(temp.left != null) queue.offer(temp.left);
+		if(temp.right != null) queue.offer(temp.right);
 	}
 }
 ```
@@ -209,8 +209,7 @@ public TreeNode comNode(TreeNode root,TreeNode n1,TreeNode n2){
 
 ## 二叉树的右视图
 -leetcode199
-输入: [1,2,3,null,5,null,4]
-输出: [1, 3, 4]
+
 解释:
 
    1            <---
@@ -219,7 +218,27 @@ public TreeNode comNode(TreeNode root,TreeNode n1,TreeNode n2){
  \     \
   5     4       <---
 
+思路解析：层序遍历，找到最右边的节点即可
 
+```
+public ArrayList<Integer> rightSideView(TreeNode root){
+	if(root == null) return null;
+	ArrayList<Integer> arr = new ArrayList<Integer>();
+	Queue<TreeNode> queue = new LinkList<TreeNode>();
+	TreeNode temp = root;
+	queue.offer(temp);
+	while(!queue.isEmpty()){
+		int size = queue.size();
+		for(int i=0;i<size;i++){
+			temp = queue.pop();
+			if(i = size-1) arr.add(temp.val);
+			if(temp.left!=null) queue.offer(temp.left);
+			if(temp.right!=null) queue.offer(temp.right);
+		}	
+	}
+	return arr;
+}
+```
 
 
 
