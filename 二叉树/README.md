@@ -3,14 +3,17 @@
 
 
 ## 二叉树中的节点个数
-``` 
-/**
-* 1. 求二叉树中的节点个数
-* 非递归
-* @param root 树根节点
-* @return 节点个数
-*/
-public static int getNodeNum(TreeNode root) {
+递归法
+```
+public int getNodeNum(TreeNode root){
+	if(root == null) return 0;
+	return getNodeNum(root.left) + getNodeNum(root.right) + 1;
+}
+```
+
+非递归法
+```
+public int getNodeNum(TreeNode root) {
     if (root == null) {
         return 0;
     }
@@ -108,18 +111,6 @@ root.left的最大深度+root.right的最大深度+1)
             
             return max;
         }
-```
-
-## 统计树中结点的个数
-树中结点的个数等于根节点(1) + 左子树结点个数 + 右子树的个数，递归求解即可。
-
-```
-public static int count(Node T) {
-	if(T != null) {
-		return count(T.left) + count(T.right) + 1;
-	}else 
-		return 0;
-	}
 ```
 
 
