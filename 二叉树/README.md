@@ -59,7 +59,7 @@ public static int getDepthRec(TreeNode root) {
 
 1.如果二叉树为空， 返回真
 2.如果二叉树不为空，如果左子树和右子树都是AVL树并且左子树和右子树高度相差不大于1，返回真，其他返回假
-
+```
 public static boolean isAVLTree(TreeNode root) {
     if (root == null) {
         return true;
@@ -69,7 +69,7 @@ public static boolean isAVLTree(TreeNode root) {
     }
     return isAVLTree(root.left) && isAVLTree(root.right); // 递归判断左右子树
 }
-
+```
 
 
 ## 二叉树的层次遍历
@@ -128,8 +128,6 @@ public int TreeLeaf(TreeNode root){
 	}
  	return TreeLeaf(root.left) + TreeLeaf(root.right);
 }
-
-
 ```
 
 
