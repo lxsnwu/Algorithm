@@ -149,13 +149,7 @@ public int kNum(TreeNode root,int k){
 ## 求二叉树的镜像
 操作给定的二叉树，将其变换为源二叉树的镜像。如下图：
 
-例如：
-  翻转前：     翻转后：
-    1     |     1
-   / \    |    / \
-  2   3   |   3   2
- / \      |      / \
-4   5     |     5   4
+![avatar](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554381410&di=5bac45528a911d090fadb6580db0b204&imgtype=jpg&er=1&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180409%2F7d2e743a4707442a890e8ebfe7ebe849.png)
 
 递归求解的过程:
 1.先把当前根节点的左右子树换掉；
