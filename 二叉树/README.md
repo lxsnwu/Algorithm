@@ -206,11 +206,11 @@ public TreeNode comNode(TreeNode root,TreeNode n1,TreeNode n2){
 
 解释:
 
-   1            <---
+   1         <---
  /   \
-2     3         <---
+2     3      <---
  \     \
-  5     4       <---
+  5     4    <---
 
 思路解析：层序遍历，找到最右边的节点即可
 
