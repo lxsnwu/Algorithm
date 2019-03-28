@@ -234,7 +234,54 @@ public ArrayList<Integer> rightSideView(TreeNode root){
 }
 ```
 
+## 给定一个二叉树，原地将它展开为链表。
 
+例如，给定二叉树
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+将其展开为：
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+```
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        if(root.left == null && root.right == null) return;
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        Stack<TreeNode> stack      = new Stack<>();
+        TreeNode currentNode       = null;
+        stack.push(root);
+        while(!stack.isEmpty()){
+            currentNode = stack.pop();
+            queue.add(currentNode);
+            if(currentNode.right != null) {
+                stack.push(currentNode.right);
+            }
+            if(currentNode.left != null) {
+                stack.push(currentNode.left);
+            }
+        }
+        currentNode = root;
+        while(queue.size() > 0){
+            currentNode.left  = null;
+            currentNode.right = queue.poll();
+            currentNode       = currentNode.right;
+        }
+    }
+```
 
 
 
