@@ -52,9 +52,57 @@ Fibonacci(4) = Fibonacci(3) + Fibonacci(2);
  }  
 ```
 
+## TOP K
 
+```
+import java.util.Arrays;
 
+public class TopK_PartitionSort {
 
+    public static void main(String[] args) {
+
+        int[] num = { 2, 20, 3, 7, 9, 1, 17, 18, 0, 4 };
+        partitionSort(num, 0, num.length - 1, 3);
+        System.out.println(Arrays.toString(num));
+    }
+
+    public static void partitionSort(int[] arr, int start, int end, int K) {
+        if (start < end) {
+            int pointKey = partitionSortCore(arr, start, end);
+            if (K - 1 == pointKey)//TopK问题的核心，就是如果返回的下标为K-1，说明已经排序好了K个最大/最小的数，但是之间的顺序是不确定的
+                return;
+            partitionSort(arr, start, pointKey - 1, K);
+            partitionSort(arr, pointKey + 1, end, K);
+        }
+    }
+
+    /**
+     * 快排的核心
+     */
+  public static int partitionSortCore(int[] arr,int start,int end){
+	  int i = start;
+	  int j = end;
+  	int temp = arr[start]
+	
+  	while(i<j){
+  		while(arr[j]>=temp && i<j){
+  			j--;
+  		}
+	  	while(arr[i]<=temp && i>j){
+	  		i++;
+  		}
+  		if(i<j){
+  			int t = arr[i];
+		  	arr[i] = arr[j];
+  			arr[j] = t;
+  		}
+  	}
+  	arr[start] = arr[i];
+  	arr[i] = temp;
+  }
+  return i;
+}
+```
 
 
 
