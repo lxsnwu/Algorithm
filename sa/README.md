@@ -71,8 +71,10 @@ public class TopK_PartitionSort {
             int pointKey = partitionSortCore(arr, start, end);
             if (K - 1 == pointKey)//TopK问题的核心，就是如果返回的下标为K-1，说明已经排序好了K个最大/最小的数，但是之间的顺序是不确定的
                 return;
-            partitionSort(arr, start, pointKey - 1, K);
-            partitionSort(arr, pointKey + 1, end, K);
+            else if(pointKey > K-1)
+            	partitionSort(arr, start, pointKey - 1, K);//如果基准大于k-1，则递归左边，否则递归右边。
+            else 	
+                partitionSort(arr, pointKey + 1, end, K);
         }
     }
 
