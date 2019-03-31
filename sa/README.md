@@ -80,8 +80,8 @@ public class TopK_PartitionSort {
      * 快排的核心
      */
   public static int partitionSortCore(int[] arr,int start,int end){
-	  int i = start;
-	  int j = end;
+	int i = start;
+	int j = end;
   	int temp = arr[start]
 	
   	while(i<j){
