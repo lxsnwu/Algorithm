@@ -79,7 +79,7 @@ public static void levelTraver(TreeNode root){
 	Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
 	queue.offer(root);
 	TreeNode temp;
-	while(!queue.isEmpty){
+	while(!queue.isEmpty()){
 		temp = queue.poll();
 		System.out.print(temp.val + " ");
 		if(temp.left != null) queue.offer(temp.left);
