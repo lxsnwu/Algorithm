@@ -28,6 +28,7 @@ int singleNumber(vector<int>& nums) {
         return result;
  }
 ```
+
 ## 位1的个数
 leetcode191
 
@@ -72,16 +73,89 @@ public int NumberOf1(int n) {
     }
 ```
 
+## 缺失数字
+leetcode268
+```
+给定一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。
 
+示例 1:
+输入: [3,0,1]
+输出: 2
 
+示例 2:
+输入: [9,6,4,2,3,5,7,0,1]
+输出: 8
 
+说明:你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?
+```
+和上面的一道题（只出现一次的数字）有异曲同工之处。看了大家的题解，异或操作（^）是一种很好的方式，不用考虑sum越界问题。
 
+举个例子：
+0 ^ 4 = 4
+4 ^ 4 = 0
+那么，就可以不用求和，直接使用异或运算^进行 抵消，剩下的数字就是缺失的了。
 
+再举个例子：
+1^1^2^2^3 = 3
+```
+int missingNumber(int[] nums) {
+    int len = nums.length;
+    for (int i = 0; i < nums.length; i++){
+        len ^= nums[i];
+        len ^= i;
+    }
+    return sum;
+}
+```
 
+还有一个很直观的解法：求出0-n的和，然后求出数组所有数的和，两个和相减，得到结果。
 
+```
+int missingNumber(int[] nums) {
+	int sum = 0;
+	for (int elem : nums) {
+		sum += elem;
+	}
+	return ((1 + nums.length) * nums.length / 2) - sum;
+}
+```
 
+## 3的幂
+```
+给定一个整数，写一个函数来判断它是否是 3 的幂次方。
+示例 1:
+输入: 27
+输出: true
 
+示例 2:
+输入: 0
+输出: false
+```
+进阶：你能不使用循环或者递归来完成本题吗？
+```
 
+	通过查看相关解析，发现了这个解法，用到了数论的知识，3的幂次的质因子只有3，而所给出的n如果也是3的幂次，故而题目中所给整数范围内最大的3的幂次的因子只能是3的幂次，1162261467是3的19次幂，是整数范围内最大的3的幂次
+```
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        return n > 0 && 1162261467%n == 0;
+    }
+}
+```
+
+皮：
+```
+public boolean isPowerOfThree(int n) {
+	if(n==0)
+	return false;
+	if(n==Math.pow(3,0)|n==Math.pow(3,2)|n==Math.pow(3,1)|n==Math.pow(3,2)|n==Math.pow(3,3)|n==Math.pow(3,4)|
+n==Math.pow(3,5)|n==Math.pow(3,6)|n==Math.pow(3,7)|n==Math.pow(3,8)|n==Math.pow(3,9)|n==Math.pow(3,10)|
+n==Math.pow(3,11)|n==Math.pow(3,12)|n==Math.pow(3,13)|n==Math.pow(3,14)|n==Math.pow(3,15)|n==Math.pow(3,16)|
+n==Math.pow(3,17)|n==Math.pow(3,18)|n==Math.pow(3,19)|n==Math.pow(3,20))
+	return true;
+	return false;
+}
+```
 
 
 
