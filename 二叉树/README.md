@@ -306,6 +306,74 @@ public ArrayList<Integer> rightSideView(TreeNode root){
 ```
 
 
+## 二叉树中的最大路径
+
+给定一个非空二叉树，返回其最大路径和。
+
+本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。
+```
+示例 1:
+输入: [1,2,3]
+
+       1
+      / \
+     2   3
+
+输出: 6
+示例 2:
+输入: [-10,9,20,null,null,15,7]
+
+   -10
+   / \
+  9  20
+    /  \
+   15   7
+  
+输出: 42
+```
+
+思路解析：
+  对于任意一个节点, 如果最大和路径包含该节点, 那么只可能是两种情况:
+1. 其左右子树中所构成的和路径值较大的那个加上该节点的值后向父节点回溯构成最大路径
+2. 左右子树都在最大路径中, 加上该节点的值构成了最终的最大路径
+这道题的遍历顺序应该是post-order（左右根） 自下向上的记录最大路径和，返回包含此节点和此节点的一个叉的最大值。
+
+```
+class Solution {
+    
+    private int ret = Integer.MIN_VALUE;
+    
+    public int maxPathSum(TreeNode root) {
+
+        getMax(root);
+        return ret;
+    }
+    
+    private int getMax(TreeNode root) {
+        if(root == null) return 0;
+        int left = Math.max(0, getMax(root.left)); // 如果子树路径和为负则应当置0表示最大路径不包含子树
+        int right = Math.max(0, getMax(root.right));
+        ret = Math.max(ret, root.val + left + right); // 判断在该节点包含左右子树的路径和是否大于当前最大路径和
+        return Math.max(left, right) + root.val;
+    }
+}
+```
+我们可以这样理解。
+1.对于一个root来说，我们先记录他的左树（left）和右树（right）的值。用ret记录最大路径和（左树 + 右树 + root）
+	
+2.在递归过程中，不断比较每个节点（root）与原来ret的大小关系。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
